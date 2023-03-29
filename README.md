@@ -21,7 +21,7 @@ An example `.php-cs-fixer.php` file to fix code in the folder `packages`:
 ```php
 <?php
 
-require 'vendor/autoload.php';
+require_once 'vendor/lst/typo3-phpcsfixer-rules/src/PhpCsFixer.php';
 
 $finder = PhpCsFixer\Finder::create()
     ->in('packages');
