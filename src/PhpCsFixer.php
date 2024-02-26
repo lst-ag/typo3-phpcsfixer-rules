@@ -6,8 +6,12 @@ namespace LST\TYPO3PhpCsFixerRules;
 
 class PhpCsFixer
 {
+    protected static array $customRules = [
+        'blank_line_before_statement' => true,
+    ];
+
     // Rules taken from https://git.typo3.org/typo3/typo3/-/blob/main/Build/php-cs-fixer/config.php
-    protected static array $rules = [
+    protected static array $officialRules = [
         '@DoctrineAnnotation' => true,
         '@PER-CS1.0' => true,
         'array_indentation' => true,
@@ -64,8 +68,13 @@ class PhpCsFixer
         'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
     ];
 
+    public static function getOfficialRules(): array
+    {
+        return self::$officialRules;
+    }
+
     public static function getRules(): array
     {
-        return self::$rules;
+        return array_merge(self::$officialRules, self::$customRules);
     }
 }
